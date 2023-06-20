@@ -30,11 +30,13 @@
     }
 
     #resultado{
-      color: white;
+      background-color: aliceblue;
+      border-radius: 1rem;
+      color: black;
       font-size: 2rem;
       text-align: center;
-      display: flex;
-      flex-wrap: wrap;
+      padding: 2rem;
+      margin-top: 1rem;
     }
 
   </style>
@@ -47,40 +49,46 @@
     <button type="button" onclick="adicionaItem()">Adicionar</button>
     <button type="button" onclick="ordenaItens()">Ordenar</button>
   </main>
-  <footer>
-    <span id="resultado"></span>
+  <footer id="resultado">
   </footer>
 
   <script>
 
-    const resultado = document.getElementById('resultado');
     const objetos = ['Cadeira', 'Impressora', 'Garfo'];
+    const resultado = document.getElementById('resultado');
     
     function adicionaItem(){
+      const footer = document.querySelector('footer');
       const input = document.getElementById('input').value;
       let indice = objetos.indexOf(input);
 
       if(!input){
         alert('Informe um valor válido');
-        return
+        return;
       }
 
       if(indice !== -1){
         alert(`Objeto ${input} já foi adicionado`);
-        return
+        return;
       }
 
       objetos.push(input);
-      console.log(objetos);
-      resultado.innerText = objetos;
+
+      resultado.innerHTML = "";
+      objetos.forEach(objeto => {
+        resultado.innerHTML += `<p>${objeto}</p>`;
+      });
 
       document.getElementById('input').value = "";
     }
     
     function ordenaItens(){
       objetos.sort();
-      console.log(objetos);
-      resultado.innerText = objetos;
+
+      resultado.innerHTML = "";
+      objetos.forEach(objeto => {
+        resultado.innerHTML += `<p>${objeto}</p>`;
+      });
     }
 
   </script>
