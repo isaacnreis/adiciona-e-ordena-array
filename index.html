@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adiciona e Ordena Array</title>
+
+  <style>
+    
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      align-items: center;
+      background: radial-gradient(blue, purple) ;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    input, button{
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+
+    #resultado{
+      color: white;
+      font-size: 2rem;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <main>
+    <input type="text" id="input" placeholder="Digite o item">
+    <button type="button" onclick="adicionaItem()">Adicionar</button>
+    <button type="button" onclick="ordenaItens()">Ordenar</button>
+  </main>
+  <footer>
+    <span id="resultado"></span>
+  </footer>
+
+  <script>
+
+    const resultado = document.getElementById('resultado');
+    const objetos = ['Cadeira', 'Impressora', 'Garfo'];
+    
+    function adicionaItem(){
+      const input = document.getElementById('input').value;
+      let indice = objetos.indexOf(input);
+
+      if(!input){
+        alert('Informe um valor válido');
+        return
+      }
+
+      if(indice !== -1){
+        alert(`Objeto ${input} já foi adicionado`);
+        return
+      }
+
+      objetos.push(input);
+      console.log(objetos);
+      resultado.innerText = objetos;
+
+      document.getElementById('input').value = "";
+    }
+    
+    function ordenaItens(){
+      objetos.sort();
+      console.log(objetos);
+      resultado.innerText = objetos;
+    }
+
+  </script>
+
+</body>
+</html>
